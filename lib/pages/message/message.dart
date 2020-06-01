@@ -3,7 +3,9 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:ChatBasic/components/avatar.dart';
+import 'package:ChatBasic/pages/chat/chat.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import '../../components/Badge.dart';
 part './message-components/messageAppBar.dart';
 part './message-components/messageItem.dart';
