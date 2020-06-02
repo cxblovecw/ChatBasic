@@ -18,7 +18,8 @@ class _ChatInputState extends State<ChatInput> {
       child: Container(
         child: TextField(
           decoration: InputDecoration(
-            border: InputBorder.none
+            border: InputBorder.none,
+            hintText: "Do something"
           ),
           controller: ChatInput.inputController,
         ),

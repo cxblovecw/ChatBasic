@@ -6,23 +6,13 @@ class MessageItem extends StatefulWidget {
   String time;
   bool ingone;
   int notRead;
-  MessageItem({this.name,this.message,this.time,this.avatarColor,this.notRead=0,this.ingone=false});
+  bool isGroup;
+  MessageItem({this.name,this.message,this.time,this.avatarColor,this.notRead=0,this.ingone=false,this.isGroup=false});
   @override
   _MessageItemState createState() => _MessageItemState();
 }
 
 class _MessageItemState extends State<MessageItem> {
-  getName(String name){
-    if(name.length==Utf8Encoder().convert(name).length){
-      return name.substring(0,name.length>2?2:name.length);
-    }else{
-      if(name.length>4){
-        return name.substring(0,2);
-      }else{
-        return name.length>2?name.substring(name.length-2,name.length):name;
-      }
-    }
-  }
   @override 
   Widget build(BuildContext context) {
     var random=new Random();
@@ -37,7 +27,7 @@ class _MessageItemState extends State<MessageItem> {
         children: <Widget>[
           Avatar(
             size: 60,
-            text: getName(widget.name),
+            text: widget.name,
             backgroundColor: widget.avatarColor,
           ),
           Expanded(
@@ -85,7 +75,7 @@ class _MessageItemState extends State<MessageItem> {
       ),
         onTap: (){
           Navigator.push(context,MaterialPageRoute(builder:(BuildContext context){
-            return ChatPage();
+            return ChatPage(isGroup:widget.isGroup);
           }));
         },
     );

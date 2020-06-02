@@ -1,5 +1,5 @@
+import 'dart:convert';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class Avatar extends StatefulWidget{
@@ -18,6 +18,17 @@ class Avatar extends StatefulWidget{
 }
 
 class _AvatarState extends State<Avatar> {
+  getName(String name){
+    if(name.length==Utf8Encoder().convert(name).length){
+      return name.substring(0,name.length>2?2:name.length);
+    }else{
+      if(name.length>4){
+        return name.substring(0,2);
+      }else{
+        return name.length>2?name.substring(name.length-2,name.length):name;
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     List<Color> colors=[
@@ -34,7 +45,7 @@ class _AvatarState extends State<Avatar> {
         borderRadius: BorderRadius.circular(widget.size/2),
         color: widget.isRandom?colors[colorIndex]:widget.backgroundColor
       ),
-      child: Center(child: Text(widget.text,
+      child: Center(child: Text(getName(widget.text),
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: widget.fontColor,
