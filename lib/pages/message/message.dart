@@ -38,9 +38,9 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
           Expanded(
             child: ListView(
               children: <Widget>[
-                MessageItem(name:"Nicko",message:"hello world hello dart hello world hello dart hello world hello dart ",time:"今天 14:10",avatarColor:colorList[0],isGroup: false,),
-                MessageItem(name:"许小洁",message:"hello world hello dart hello world hello dart hello world hello dart ",time:"今天 14:10",avatarColor:colorList[1],isGroup: false),
-                MessageItem(name:"本能管家科技有限公司",message:"许小洁:Lorem ipsum dolor sit amet,consectetur adipiscing elit ,sed do",time:"今天 14:10",avatarColor:colorList[2],isGroup: true),
+                MessageItem(name:"Nicko",message:"hello world hello dart hello world hello dart hello world hello dart ",time:"今天 14:10",avatarColor:colorList[0],isGroup: false,notRead:999,),
+                MessageItem(name:"许小洁",message:"hello world hello dart hello world hello dart hello world hello dart ",time:"今天 14:10",avatarColor:colorList[1],isGroup: false,ingone: true,notRead: 99,),
+                MessageItem(name:"本能管家科技有限公司",message:"许小洁:Lorem ipsum dolor sit amet,consectetur adipiscing elit ,sed do",time:"今天 14:10",avatarColor:colorList[2],isGroup: true,notRead: 0,),
               ],
           ))
         ],

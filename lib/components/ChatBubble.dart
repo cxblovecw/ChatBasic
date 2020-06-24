@@ -12,6 +12,7 @@ class ChatBubble extends StatefulWidget {
   double previousFontSize;
   String previous;
   double maxWidth;
+  String time;
   ChatBubble(this.text,
       {this.bottomLeft = 100,
       this.bottomRight = 100,
@@ -22,7 +23,8 @@ class ChatBubble extends StatefulWidget {
       this.color=Colors.white,
       this.fontSize=16,
       this.previousFontSize=12,
-      this.maxWidth=240
+      this.maxWidth=240,
+      this.time,
       });
   @override
   _ChatBubbleState createState() => _ChatBubbleState();
@@ -45,7 +47,7 @@ class _ChatBubbleState extends State<ChatBubble> {
                     spreadRadius: 1.0 
                     )
               ],
-              color: widget.color,
+              color:widget.isAnswer?Color.fromRGBO(245,255,255,1):widget.color,
               borderRadius: BorderRadius.only(
                 bottomLeft:
                     Radius.circular(!widget.isAnswer ? widget.bottomLeft : 15),
@@ -54,7 +56,7 @@ class _ChatBubbleState extends State<ChatBubble> {
                     Radius.circular(!widget.isAnswer ? widget.topLeft : 15),
                 topRight: Radius.circular(widget.topRight),
               )),
-          padding: EdgeInsets.fromLTRB(15, 10, 20, 5),
+          padding: EdgeInsets.fromLTRB(20, 10, 40, 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -62,7 +64,9 @@ class _ChatBubbleState extends State<ChatBubble> {
               widget.isAnswer
                   ? Wrap(
                       children: <Widget>[
-                        Row(children: <Widget>[
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: <Widget>[
                           Container(width: 2,height: 12,color:Colors.blue,margin: EdgeInsets.only(right: 10),),
                           Container(
                             constraints: BoxConstraints(
@@ -79,7 +83,6 @@ class _ChatBubbleState extends State<ChatBubble> {
                           decoration: BoxDecoration(
                             color: Color.fromRGBO(155, 155, 155, 0.1),
                             borderRadius: BorderRadius.circular(8),
-                            
                           ),
                         )
                         ],)
@@ -105,13 +108,13 @@ class _ChatBubbleState extends State<ChatBubble> {
           ),
         ),
         //时间
-        Container(
+        widget.time!=null?Container(
           child: Text(
-            "10:21 AM",
+            widget.time,
             style: TextStyle(color: Colors.grey, fontSize: 12),
           ),
           padding: EdgeInsets.only(top: 5),
-        ),
+        ):Container(),
         Container(height: 5,)
       ],
     );

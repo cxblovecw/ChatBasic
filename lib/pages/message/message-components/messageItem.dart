@@ -60,7 +60,7 @@ class _MessageItemState extends State<MessageItem> {
                       children: <Widget>[
                         Expanded(child: Container(),),
                         widget.ingone?Icon(Icons.notifications_off,size: 20,color: Colors.grey,):Container(),
-                        Badge(number: widget.notRead),
+                        widget.notRead==0?Container():Badge(number: widget.notRead),
                       ],
                     ),),
                   ],
